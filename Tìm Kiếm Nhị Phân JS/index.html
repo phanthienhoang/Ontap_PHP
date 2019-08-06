@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    function findNumberByBinarySearch(array, x) {
+           let left = 0;
+           let right = array.length - 1;
+           while (left <= right) {
+               let mid = Math.floor((left + right) / 2);
+               if (x === array[mid]) {
+                   return mid;
+               } else if (x < array[mid]) {
+                   right = mid - 1;
+               } else if (x > array[mid]) {
+                   left = mid + 1;
+               }
+           }
+           return -1;
+       }
+
+       var arr = [1,2,3,4,5,6,7,8];
+       console.log(findNumberByBinarySearch(arr, 3));
+    </script>
+</body>
+</html>
