@@ -143,3 +143,48 @@ echo '<br/>';
 $ll->Delete(8);
 $ll->PrintAsList();
 echo 'Total elements ' . $ll->GetCount();
+
+
+// xóa node cuối 
+// public function deleteLastNode()
+// {
+//     if($this->firstNode != NULL)
+//     {
+//         if($this->firstNode->next == NULL)
+//         {
+//             $this->firstNode = NULL;
+//             $this->count--;
+//         }
+//         else
+//         {
+//             $previousNode = $this->firstNode;
+//             $currentNode = $this->firstNode->next;
+
+//             while($currentNode->next != NULL)
+//             {
+//                 $previousNode = $currentNode;
+//                 $currentNode = $currentNode->next;
+//             }
+
+//             $previousNode->next = NULL;
+//             $this->count--;
+//         }
+//     }
+// }   
+ 
+
+
+// tìm số 
+
+// public function find($key)
+// {
+//     $current = $this->firstNode;
+//     while($current->data != $key)
+//     {
+//         if($current->next == NULL)
+//             return null;
+//         else
+//             $current = $current->next;
+//     }
+//     return $current;
+// }

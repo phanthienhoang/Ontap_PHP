@@ -20,21 +20,26 @@
         private $firstNode;
         private $lastNode;
         private $count;
+
         function __construct()
         {
             $this->firstNode = NULL;
             $this->lastNode = NULL;
             $this->count = 0;
         }
+
         public function insertFirst($data)
         {
             $link = new Node($data);
             $link->next = $this->firstNode;
             $this->firstNode = $link;
             if($this->lastNode == NULL)
+            {
                 $this->lastNode = $link;
-                $this->count++;
+            }
+            $this->count++;
         }
+
         public function insertLast($data)
         {
             if($this->firstNode != NULL)
@@ -50,10 +55,21 @@
                 $this->insertFirst($data);
             }
         }
+
+        public function deleteFirstNode()
+        {
+            $temp = $this->firstNode;
+            $this->firstNode = $this->firstNode->next;
+            if($this->firstNode != NULL)
+                $this->count--;
+            return $temp;
+        } 
+        
         public function totalNodes()
         {
             return  "số nốt là: ".$this->count."<br>";
         }
+
         public function readList()
         {
             $listData = array();
@@ -80,6 +96,7 @@ echo '<pre/>';
 
 $linkedList->insertLast(4);
 $linkedList->insertLast(5);
+$linkedList->deleteFirstNode();
 $totalNodes = $linkedList->totalNodes();
 $linkData = $linkedList->readList();
 echo '<br/>' .'Mảng được insert vào là :';
