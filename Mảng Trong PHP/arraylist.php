@@ -33,6 +33,9 @@
                 echo   "{$v1}";
             }
         }   
+
+        $array1 = array(1,'1','2',2);
+        print_r($array1) ;
     ?>
 </body>
 </html>
