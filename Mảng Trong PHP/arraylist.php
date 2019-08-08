@@ -8,7 +8,7 @@
 </head>
 <body>
     <?php
-        // mảng 1 chiều
+        // mảng liên hợp 
         $arrayOneWay =array(
             '1'=>'hoàng',
             '2' => 'long',

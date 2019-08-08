@@ -46,6 +46,7 @@
                 $_POST["a2num4"]
             );
             $result = combineArray($array1, $array2);
+            print_r($result);
             echo "<br>";
             echo '<pre>';
             foreach($result as $key => $value){
