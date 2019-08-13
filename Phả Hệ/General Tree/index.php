@@ -16,7 +16,6 @@
             $this->relations[$type][] = $person;
         }
     
-        // tra cứu mối quan hệ 
         function getRelations($type) {
             if (!isset($this->relations[$type])) {
                 return array();
@@ -25,7 +24,7 @@
             return $this->relations[$type];
         }
 
-        // vợ chồng
+
         function getRelation($type) {
             $relations = $this->getRelations($type);
             return empty($relations) ? null : $relations[0];
@@ -69,12 +68,16 @@
     $sara  = new Person('Sara');
     $mike  = new Person('Mike');
     $bobby = new Person('Bobby');
+    $bobby2 = new Person('Bobby2');
+    $bobby3 = new Person('Bobby3');
     $billy = new Person('Billy');
 
     $john ->addSpouse ($jane);
     $sara ->addParents($jane, $john);
     $sara ->addSpouse ($mike);
     $bobby->addParents($sara, $mike);
+    $bobby2->addParents($sara, $mike);
+    $bobby3->addParents($sara, $mike);
     $billy->addParents($jane, $john);
 
     function displayFamilyTree($root, $prefix = "") {
@@ -84,7 +87,7 @@
             $parents[] = $root->getSpouse();
         }
 
-        echo $prefix . implode(" & ", $parents) . "\n";
+        echo $prefix . implode(" & ", $parents) . "</br>";
 
         foreach ($root->getChildren() as $child) {
             displayFamilyTree($child, "....$prefix");

@@ -9,7 +9,7 @@
 <body>
     <?php
        function kiem_tra($mang, $can_tim)
-       {
+       { 
            for ($i = 0; $i < count($mang); $i++)
            { 
                if ($mang[$i] == $can_tim)

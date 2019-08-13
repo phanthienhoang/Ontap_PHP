@@ -1,10 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form method = 'POST'>
+        <input type="text" name = 'search'>
+        <input type='submit' value = 'search'>
+    </form>
+
 <?php
     class TreeNode 
     {
-        public $data = NULL;
+        public $data = [];
+
         public $children = [];
 
-        public function __construct(string $data = NULL)
+        public function __construct($data)
         {
             $this->data = $data ;
         }
@@ -28,10 +43,21 @@
             if ($node)
             {
                 echo str_repeat('-', $lever);
-                echo $node->data . '</br>';
+                echo $node->data  . '</br>';
                 foreach ($node->children as $childNode)
                 {
                     $this->traverse($childNode, $lever +1);
+                }
+            }
+        }
+
+        public function search(TreeNode $children ,$search)
+        {
+            if($_SERVER['REQUEST_METHOD'] === 'POST')
+            {     
+                $search = $_POST['search'];
+                    if( $search === $key ){
+                        echo $value;
                 }
             }
         }
@@ -71,4 +97,12 @@
 
     $tree->traverse($tree->root);
 
+    // $search = 'PHAN THIÊN HOÀNG';
+    // $tree->search($tree->root,$search);
+
+    // var_dump( $tree->search($tree->root, $search));
+
 ?>
+
+</body>
+</html>
