@@ -36,9 +36,9 @@
             $statement->bindParam(4, $create->description);
             $statement->bindParam(5, $create->quantity);
             $statement->bindParam(6, $create->price);
-            // return $statement->execute();
+            return $statement->execute();
 
-            var_dump($statement->execute());
+            // var_dump($statement->execute());
         }
 
         // lấy id sản phẩm 
