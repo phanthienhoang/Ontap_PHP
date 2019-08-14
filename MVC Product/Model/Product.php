@@ -3,7 +3,7 @@
     namespace Model;
     
     class Product
-    {
+    {   
         public $productName;
         public $productLine;
         public $productVendor;

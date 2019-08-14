@@ -33,11 +33,49 @@
                 $description = $_POST['description'];
                 $quantity = $_POST['quantity'];
                 $price = $_POST['price'];
-
+                
                 $product = new Product( $productName, $productLine,$productVendor,$description,$quantity,$price);
                 $this->productDB->create($product);
                 $message = 'tạo mới thành công';
                 include 'View/add.php';
+            }
+        }
+
+        // gọi tới phương thức xóa 
+        public function delete()
+        {
+           
+            if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+                $id = $_GET['id'];
+                $product = $this->productDB->get($id);
+                include 'View/delete.php'; 
+            } else {
+                $id = $_POST['productName'];
+                var_dump($id);
+                $this->productDB->delete($id);
+                header('Location: index.php');
+            }
+        }
+
+        //gọi tới phương thức update
+        public function edit()
+        {
+            if ($_SERVER['REQUEST_METHOD'] === 'GET') 
+            {
+                $id = $_GET['id'];
+                $product = $this->productDB->get($id);
+                include 'View/edit.php';
+            } else {
+                    $id = $_POST['productName'];
+                    $product = new Product(
+                        $_POST['productName'], 
+                        $_POST['productLine'],
+                        $_POST['productVendor'],
+                        $_POST['description'],
+                        $_POST['quantity'],
+                        $_POST['price']);
+                    $this->productDB->update($id, $product);
+                    header('Location: index.php');
             }
         }
     }
