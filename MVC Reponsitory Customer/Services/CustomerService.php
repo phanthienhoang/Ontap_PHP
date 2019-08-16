@@ -1,11 +1,12 @@
 <?php
-namespace Services;
 
-interface CustomerService
+    namespace Services;
+
+    interface CustomerService
 {
     public function getAll();
-    public function findById($id);
-    public function create($request);
-    public function update($request, $id);
-    public function destroy($id);
+    public function getId($id);
+    public function create($customer);
+    public function update($customer, $id);
+    public function delete($id);
 }

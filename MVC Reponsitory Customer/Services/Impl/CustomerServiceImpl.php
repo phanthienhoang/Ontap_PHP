@@ -1,93 +1,49 @@
 <?php
 namespace Services\Impl;
-
-use Repositories\CustomerRepository;
+use Model\DBConnection;
+use Repositoris\Impl\CustomerRepositoryImpl;
 use Services\CustomerService;
 
 class CustomerServiceImpl implements CustomerService
 {
-    protected $customerRepository;
+    protected $CustomerRepositoryImpl;
 
-
-    public function __construct(CustomerRepository $customerRepository)
-    {
-        $this->customerRepository = $customerRepository;
+    public function __construct()
+    {   
+        $connection = new DBConnection("mysql:host=localhost;dbname=ban_hang_online", "root", "");
+        $this->CustomerRepositoryImpl = new CustomerRepositoryImpl($connection->connect());
     }
 
     public function getAll()
     {
-        $customers = $this->customerRepository->getAll();
+        $customers = $this->CustomerRepositoryImpl->getAll();
 
         return $customers;
     }
 
-    public function findById($id)
+
+    public function create($customer)
     {
-        $customer = $this->customerRepository->findById($id);
-
-        $statusCode = 200;
-        if (!$customer)
-            $statusCode = 404;
-
-            $data = [
-                'statusCode' => $statusCode,
-                'customers' => $customer
-            ];
-
-        return $data;
+        $customers = $this->CustomerRepositoryImpl->create($customer);
+        return $customers;
     }
 
-    public function create($request)
+    public function getId($id)
     {
-        $customer = $this->customerRepository->create($request);
-
-        $statusCode = 201;
-        if (!$customer)
-            $statusCode = 500;
-
-        $data = [
-            'statusCode' => $statusCode,
-            'customers' => $customer
-        ];
-
-        return $data;
+        $customers = $this->CustomerRepositoryImpl->getId($id);
+        return $customers;
     }
 
-    public function update($request, $id)
+    public function delete($id)
     {
-        $oldCustomer = $this->customerRepository->findById($id);
-
-        if (!$oldCustomer) {
-            $newCustomer = null;
-            $statusCode = 404;
-        } else {
-            $newCustomer = $this->customerRepository->update($request, $oldCustomer);
-            $statusCode = 200;
-        }
-
-        $data = [
-            'statusCode' => $statusCode,
-            'customers' => $newCustomer
-        ];
-        return $data;
+        $customers = $this->CustomerRepositoryImpl->delete($id);
+        return $customers;
     }
 
-    public function destroy($id)
+    public function update($id,$customer)
     {
-        $customer = $this->customerRepository->findById($id);
-
-        $statusCode = 404;
-        $message = "User not found";
-        if ($customer) {
-            $this->customerRepository->destroy($customer);
-            $statusCode = 200;
-            $message = "Delete success!";
-        }
-
-        $data = [
-            'statusCode' => $statusCode,
-            'message' => $message
-        ];
-        return $data;
+        $customers = $this->CustomerRepositoryImpl->update($id,$customer);
+        return $customers;
     }
+
 }

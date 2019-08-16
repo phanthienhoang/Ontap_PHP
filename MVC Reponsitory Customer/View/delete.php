@@ -1,9 +1,9 @@
-<h1>Bạn chắc chắn muốn xóa sản phẩm</h1>
-<h3><?php echo $product->productName . ' '.'?'; ?></h3>
+<h1>Bạn chắc chắn muốn xóa khách hàng này?</h1>
+<h3><?php echo $customer->name; ?></h3>
 <form action="./index.php?page=delete" method="post">
-  <input type="hidden" name="productName" value="<?php echo $product->productName; ?>"/>
+  <input type="hidden" name="id" value="<?php echo $customer->id; ?>"/>
   <div class="form-group">
-      <input type="submit" value="delete" class="btn btn-danger"/>
+      <input type="submit" value="Delete" class="btn btn-danger"/>
       <a class="btn btn-default" href="index.php">Cancel</a>
   </div>
 </form>

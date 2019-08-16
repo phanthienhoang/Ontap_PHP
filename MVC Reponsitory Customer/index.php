@@ -1,10 +1,19 @@
 <?php
-    require "Model/DBConnection.php";
-    require "Model/ProductDB.php";
-    require "Model/Product.php";
-    require "Controller/Controller.php";
+  
+    require "Model/Customer.php";
+    require "Model/DBConection.php";
 
-    use \Controller\CustomerController;
+    require "controller/CustomerController.php";
+
+    require "Repositoris/Repository.php";
+    require "Repositoris/CustomerRepository.php";
+    require "Repositoris/Eloquent/EloquentRepository.php";
+    require "Repositoris/Impl/CustomerRepositoryImpl.php";
+
+    require "Services/CustomerService.php";
+    require "Services/Impl/CustomerServiceImpl.php";
+    
+    use Controller\CustomerController;
 ?>
 <!doctype html>
 <html lang="en">
